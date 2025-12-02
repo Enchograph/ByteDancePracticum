@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical"
+    tools:context=".activity.ProfileActivity">
+
+    <!-- 顶部蓝色Header区域 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/app_blue"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="48dp"
+    android:paddingBottom="24dp">
+
+
+        <!-- 圆形头像 -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_person"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
+
+        <!-- 用户名 -->
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_signature"
+            app:layout_constraintStart_toEndOf="@id/iv_avatar"
+            app:layout_constraintTop_toTopOf="@id/iv_avatar"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="用户名" />
+
+        <!-- 签名/欢迎语 -->
+        <TextView
+            android:id="@+id/tv_signature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_username"
+            app:layout_constraintTop_toBottomOf="@id/tv_username"
+            tools:text="欢迎来到信息App" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 列表条目容器 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp">
+
+            <!-- 个人信息 -->
+            <include layout="@layout/item_profile_entry"
+                android:id="@+id/item_personal_info" />
+
+            <!-- 我的收藏 -->
+            <include layout="@layout/item_profile_entry"
+                android:id="@+id/item_favorites" />
+
+            <!-- 浏览历史 (已修正) -->
+            <include layout="@layout/item_profile_entry"
+                android:id="@+id/item_history" />
+
+            <!-- 设置 -->
+            <include layout="@layout/item_profile_entry"
+                android:id="@+id/item_settings" />
+
+
+            <!-- 关于我们 -->
+            <include layout="@layout/item_profile_entry"
+                android:id="@+id/item_about_us" />
+
+            <!-- 意见反馈 -->
+            <include layout="@layout/item_profile_entry"
+                android:id="@+id/item_feedback" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
